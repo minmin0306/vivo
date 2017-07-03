@@ -1,0 +1,292 @@
+/**1、公共样式**/
+*{
+    box-sizing:border-box;
+}
+body{
+    font:14px "microsoft yanei",Arial,Helvetica;
+    color:#696969;
+    margin:0;
+    padding:0;
+}
+p,h1,h2,h3,h4,h5,h6,ul,li,ol,dl,dd,hr{
+    margin:0;
+    padding:0;
+    list-style:none;
+}
+a{
+    color:#9999A4;
+    text-decoration:none;
+}
+a:hover{
+    color:#008CD6;
+    text-decoration:none;
+}
+img{
+    vertical-align:bottom;
+}
+.lf{float:left;}
+.rt{float:right;  }
+.clear:after{
+    content:"";
+    display:block;
+    clear:both;}
+/****2、整体布局*****/
+#top,#main,#footer{
+    width:1211px;
+    margin:0 auto;
+}
+/******模块一、页面顶部********/
+#top{
+    /*高度，行高，背景颜色*/
+    height:80px;
+    line-height:80px;
+    background:rgba(255,255,255,.9);
+    border-bottom:1px solid #F2F2F2;
+}
+/***主导航***/
+#top>a{
+    display:block;
+    width:250px;
+    height:80px;
+    background:url(../images/vivo-gb-logo.png) no-repeat center center;
+}
+#top>#nav{
+    /*宽度、*/
+    width:710px;
+    border-left:1px solid #F2F2F2;
+}
+#nav>li{
+    float:left;
+    border-right:1px solid #F2F2F2;
+}
+#nav>li>a{
+    /*行内块，宽度，颜色,大小，水平对齐*/
+    display:block;
+    width:100px;
+    color:#666666;
+    font-size:18px;
+    text-align:center;
+}
+#nav>li a:hover{
+    background-color:#008CD6;
+    color:#FFFFFF;
+}
+
+/*****搜索、注册、购物车****/
+#top>#custom{
+    /*宽度、右内边距*/
+    width:251px;
+    height:80px;
+    padding-right:40px;
+}
+#custom>ul>li{
+    /*浮动、宽、高、边框、边框倒角、*/
+    float:right;
+    width:45px;
+    height:45px;
+    margin-top:20px;
+    margin-left:5px;
+}
+#custom>ul>li>a{
+    display:block;
+    width:45px;
+    height:45px;
+    border:1px solid #EAEAEA;
+    border-radius:50%;
+}
+#custom>ul>li>a:hover{
+    background: #008CD6;
+}
+#custom>ul>li>a>b{
+    display: block;
+    width:20px;
+    height:20px;
+    margin:10px;
+}
+#custom li.cart>a>b{
+    background:url(../images/vivo-head-ico.png) no-repeat -10px -96px;
+}
+#custom li.cart>a:hover b{
+    background:url(../images/vivo-head-ico.png) no-repeat -10px -136px;
+}
+#custom li.search>a>b{
+    background:url(../images/vivo-head-ico.png) no-repeat -11px -11px;
+}
+#custom li.search>a:hover b{
+    background:url(../images/vivo-head-ico.png) no-repeat -11px -52px;
+}
+#custom li.login>a>b{
+    background:url(../images/vivo-head-ico.png) no-repeat -53px -11px;
+}
+#custom li.login>a:hover b{
+    background:url(../images/vivo-head-ico.png) no-repeat -53px -52px;
+}
+#custom li.logined>a>b{
+    background:url(../images/vivo-head-ico.png) no-repeat -53px -11px;
+}
+#custom li.logined>a:hover b{
+    background:url(../images/vivo-head-ico.png) no-repeat -53px -52px;
+}
+/************2、主体部分***********/
+/*2.1滑动广告*/
+#slider-box{
+    width:1211px;
+    height:378px;
+}
+#slider{
+    width:1211px;
+    height:380px;
+    position:relative;
+    overflow:hidden;
+}
+#slider>a{
+    position:absolute;
+    z-index:-1;
+    overflow:hidden;
+}
+#slider>a.active{
+    z-index:auto;
+}
+#slider>ul>li{
+    /*宽度，高度，倒角，背景，文字：水平居中，行高，颜色，加粗，右外边距，左浮动*/
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background-color:#fff;
+    margin-right:10px;
+    float:left;
+}
+#slider>ul{
+    position:absolute;
+    right:600px;
+    bottom:25px;
+}
+#slider>ul li.active {
+    background: #008CD6;
+}
+/*详情部分*/
+
+/***************3、底部*************/
+#footer-top{
+    margin-top:2px;
+    height:86px;
+    border:1px solid #E8E8E9;
+    padding:0 114px;
+}
+#footer-top ul>li{
+    float:left;
+    height:86px;
+    line-height:86px;
+    width:245px;
+}
+#footer-top ul>li>a{
+    display:inline-block;
+}
+#footer-top ul>li>a>p{
+    width:245px;
+    height:86px;
+    line-height:86px;
+    text-align:left;
+    margin:0;
+}
+#footer-top ul>li>a b{
+    display:inline-block;
+    height:60px;
+    width:60px;
+    margin-right:5px;
+    background:url(../images/footer-icon.png) no-repeat 0 0;
+    vertical-align: middle;
+}
+#footer-list{
+    margin-top:2px;
+    margin-bottom:30px;
+}
+#footer-list ul{
+    float:left;
+    width:242px;
+}
+#footer-list ul>li{
+    margin-left:70px;
+    font-size:18px;
+    margin-top:10px;
+    position:relative;
+}
+#footer-list ul>li:first-child{
+    padding-left:40px;
+}
+#footer-list ul>li>b{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:32px;
+    height:28px;
+    background:url(../images/footer-icon.png) no-repeat 0 -60px;
+}
+
+
+#footer-bottom{
+    padding:30px;
+    background-color:#222;
+    font-size:10px;
+}
+#footer-bottom #text{
+    margin-left:30px;
+    font-size:14px;
+}
+#footer-bottom #fans>ul>li{
+     float:left;
+    height:25px;
+    line-height:25px;
+ }
+#footer-bottom #fans>ul>li:first-child{
+    color:#fff;
+    margin-right:5px;
+}
+#footer-bottom #fans>ul>li>a{
+    display:inline-block;
+    width:25px;
+    height:25px;
+    background: url(../images/vivo-gb-ico.png) no-repeat -430px -90px;
+}
+/*附加导航*/
+div.affix{
+    position:fixed;
+    top:200px;
+    right:30px;
+    z-index:100;
+    width:49px;
+    height:196px;
+}
+div.affix>ul>li>a{
+    display:block;
+    width:49px;
+    height:49px;
+
+}
+div.affix>ul>li{
+    background:#C3C3C3;
+    border-bottom:1px solid #CCCCCC;
+}
+div.affix>ul>li>a>img{
+    margin:8px 0px 0px 8px  ;
+}
+div.affix>ul>li{
+    position:relative;
+}
+/*div.affix>ul>li:hover{*/
+    /*background: #249BDC;*/
+/*}*/
+div.affix>ul>li:hover b{
+   display:block;
+}
+div.affix>ul>li>b{
+    position:absolute;
+    right:49px;
+    width:60px;
+    height:49px;
+    line-height:49px;
+    background: #C3C3C3;
+    color:#fff;
+    display:none;
+    border-radius:5px 0 0 5px;
+}

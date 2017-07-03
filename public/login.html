@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <style>
+        .container {
+            position: relative;
+        }
+
+        .bg-video {
+            position: absolute;
+            z-index: -1;
+        }
+
+        .box {
+            background: rgba(255, 255, 255, 0.8);
+            width: 70%;
+            min-height: 300px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px #aaa;
+            margin: 80px auto;
+            padding: 20px;
+        }
+        .box h3{
+            text-align: center;
+            margin-bottom:30px;
+        }
+        .box p{
+            text-align: right;
+            margin:0 165px 20px 0;
+        }
+        .box label{
+            margin-left:44px;
+        }
+        div.auto label{
+            margin-left:0px;
+        }
+        .box p>a{
+            display:inline-block;
+            background: #008CD6;
+            color:#fff;
+            width:65px;
+            height:25px;
+            text-align: center;
+            line-height:25px;
+            border-radius:4px;
+            margin-left:5px;
+        }
+        a:hover{
+            text-decoration:none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!--用作背景的视频-->
+    <video class="bg-video" src="res/vivo.mp4" autoplay loop muted width="100%"></video>
+    <!--用作盛放表单的盒子，半透明背景-->
+    <div class="box">
+        <form class="form-horizontal" id="form-login">
+            <h3 >登录</h3>
+            <p>还没账号?<a href="register.html">立即注册</a></p>
+            <!--用户名-->
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label for="uname" class="control-label">用户名：</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" placeholder="请输入用户名" autofocus name="uname" id="uname" required/>
+                </div>
+                <div class="col-sm-5">
+                    <span class="help-block">用户名可以包含数字、字母</span>
+                </div>
+            </div>
+
+            <!--密码-->
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label for="upwd" class="control-label">密码：</label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="password" class="form-control" placeholder="请输入密码" autofocus name="upwd" id="upwd" required
+                           minlength="6" maxlength="12">
+                </div>
+                <div class="col-sm-5">
+                    <span class="help-block">密码长度在6~12位之间</span>
+                </div>
+            </div>
+
+            <div class="form-group auto">
+                <div class="col-sm-3 col-sm-offset-2">
+                    <!--<input type="checkbox" id="auto_login"><label for="auto_login">自动登录</label>-->
+                </div>
+                <div class="col-sm-2">
+                    <a href="">忘记密码？</a>
+                </div>
+           </div>
+            <!--提交按钮-->
+            <div class="form-group">
+                <div class="col-sm-5 col-sm-offset-2">
+                    <input type="button" value="登录" class="btn btn-success btn-block" id="bt-login">
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.js"></script>
+<script>
+    $('#bt-login').click(function(){
+        //表单序列化，拼接用户所有的输入
+        var data = $('#form-login').serialize();
+        //发起异步请求，进行登录验证
+        $.ajax({
+            type: 'POST',
+            url: '/user/login',
+            data: data,
+            success: function(result){
+                if(result.code===200){
+                    alert('登录成功！3s跳转到首页');
+                    //在客户端记录登录的uname和uid供后续的页面继续使用
+                    sessionStorage['loginUname'] = $('[name="uname"]').val();
+                    sessionStorage['loginUid'] = result.uid;
+                    location.href = 'index.html';
+                }else {
+                    alert('登录失败！错误原因：'+result.msg);
+                }
+            }
+        })
+    });
+</script>
+</body>
+</html>
